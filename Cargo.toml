@@ -1,0 +1,12 @@
+[package]
+name = "cydonia"
+version = "0.1.0"
+authors = ["clearloop <udtrokia@gmail.com>"]
+edition = "2018"
+
+[[bin]]
+name = "cydonia"
+path = "./bin/cydonia"
+
+[dependencies]
+etc = "0.1.16"
