@@ -6,7 +6,18 @@ edition = "2018"
 
 [[bin]]
 name = "cydonia"
-path = "./bin/cydonia"
+path = "./bin/cydonia.rs"
 
 [dependencies]
-etc = "0.1.16"
+etc = { version = "0.1.16", features = [ "serde-tree" ]}
+dirs = "3.0.2"
+thiserror = "1.0.24"
+structopt = "0.3.21"
+
+[dependencies.ceres-runtime]
+git = "https://github.com/patractlabs/ceres.git"
+branch = "cl/dep"
+
+[build-dependencies]
+etc = { version = "0.1.16", features = [ "serde-tree" ]}
+dirs = "3.0.2"
