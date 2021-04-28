@@ -25,14 +25,12 @@ jobs:
             echo $CIRCLE_TAG
             echo ${CIRCLE_TAG/''/v}
 workflows:
-  t:
+  test:
     jobs:
-      echo-tag:
-        filters:
-          branches:
-            only: main
-      echo-with-tag:
-        filters:
-          tags:
-            only: /^v.*/
+      - echo-tag
+      - echo-when-tag:
+          filters:
+            tags:
+              only: /^v.*/
+
       
