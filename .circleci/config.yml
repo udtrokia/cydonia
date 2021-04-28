@@ -1,0 +1,38 @@
+version: 2.1
+executors:
+  test-executor:
+    resource_class: xlarge
+    machine:
+      image: ubuntu-2004:202010-01
+      docker_layer_caching: true
+
+jobs:
+  echo-tag:
+    executor: test-executor
+    description: Format Check
+    steps:
+      - checkout
+      - run:
+          name: Echo Envs
+          command: |
+            echo $CIRCLE_TAG
+  echo-when-tag:
+    executor: test-executor
+    steps:
+      - run:
+          name: Echo when tagged
+          command: |
+            echo $CIRCLE_TAG
+            echo ${CIRCLE_TAG/''/v}
+workflows:
+  t:
+    jobs:
+      echo-tag:
+        filters:
+          branches:
+            only: main
+      echo-with-tag:
+        filters:
+          tags:
+            only: /^v.*/
+      
